@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps Clone</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Left Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <!-- Search Panel -->
+    <div class="search-panel" id="searchPanel">
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search for a place..." autocomplete="off" />
+        <button class="clear-btn" id="clearSearch" style="display:none"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- Directions Panel -->
+    <div class="directions-panel" id="directionsPanel" style="display:none">
+      <div class="panel-header">
+        <button class="back-btn" id="backToSearch"><i class="fas fa-arrow-left"></i></button>
+        <h3>Directions</h3>
+      </div>
+      <div class="direction-inputs">
+        <div class="dir-input-row">
+          <span class="dot origin-dot"></span>
+          <input type="text" id="originInput" placeholder="Starting point..." autocomplete="off" />
+        </div>
+        <div class="dir-input-row">
+          <span class="dot dest-dot"></span>
+          <input type="text" id="destInput" placeholder="Destination..." autocomplete="off" />
+        </div>
+      </div>
+      <div class="direction-mode">
+        <button class="mode-btn active" data-mode="driving"><i class="fas fa-car"></i></button>
+        <button class="mode-btn" data-mode="walking"><i class="fas fa-walking"></i></button>
+        <button class="mode-btn" data-mode="cycling"><i class="fas fa-bicycle"></i></button>
+      </div>
+      <div class="route-info" id="routeInfo" style="display:none"></div>
+      <div class="route-steps" id="routeSteps"></div>
+    </div>
+
+    <!-- Place Details -->
+    <div class="place-details" id="placeDetails" style="display:none">
+      <div class="panel-header">
+        <button class="back-btn" id="closePlaceDetails"><i class="fas fa-arrow-left"></i></button>
+        <h3 id="placeName">Place</h3>
+      </div>
+      <div class="place-content" id="placeContent"></div>
+    </div>
+  </div>
+
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <!-- Layer Switcher -->
+  <div class="layer-switcher" id="layerSwitcher">
+    <button class="layer-btn" data-layer="standard" title="Standard Map">
+      <i class="fas fa-map"></i>
+      <span>Standard</span>
+    </button>
+    <button class="layer-btn active" data-layer="satellite" title="Satellite">
+      <i class="fas fa-satellite"></i>
+      <span>Satellite</span>
+    </button>
+    <button class="layer-btn" data-layer="terrain" title="Terrain">
+      <i class="fas fa-mountain"></i>
+      <span>Terrain</span>
+    </button>
+    <button class="layer-btn" data-layer="dark" title="Dark Mode">
+      <i class="fas fa-moon"></i>
+      <span>Dark</span>
+    </button>
+  </div>
+
+  <!-- My Location Button -->
+  <div class="my-location-btn" id="myLocationBtn" title="Find my location">
+    <i class="fas fa-location-crosshairs"></i>
+  </div>
+
+  <!-- Directions FAB -->
+  <div class="directions-fab" id="directionsFab" title="Get directions">
+    <i class="fas fa-directions"></i>
+  </div>
+
+  <!-- Zoom Controls -->
+  <div class="custom-zoom">
+    <button id="zoomIn"><i class="fas fa-plus"></i></button>
+    <button id="zoomOut"><i class="fas fa-minus"></i></button>
+  </div>
+
+  <!-- Scale -->
+  <div class="map-scale" id="mapScale"></div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay" style="display:none">
+    <div class="spinner"><i class="fas fa-spinner fa-spin"></i></div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
